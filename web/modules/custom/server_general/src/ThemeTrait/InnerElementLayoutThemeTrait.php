@@ -104,4 +104,23 @@ trait InnerElementLayoutThemeTrait {
     ];
   }
 
+  /**
+   * Build "Card vertically aligned" layout.
+   *
+   * @param array $items
+   *   The elements as render array.
+   * @param \Drupal\server_general\ThemeTrait\Enum\BackgroundColorEnum $bg_color
+   *   The background color.
+   *
+   * @return array
+   *   Render array.
+   */
+  protected function buildInnerElementLayoutVertical(array $items, BackgroundColorEnum $bg_color = BackgroundColorEnum::Transparent): array {
+    return [
+      '#theme' => 'server_theme_inner_element_layout__vertical_justify_between',
+      '#items' => $items,
+      '#bg_color' => $bg_color->value,
+    ];
+  }
+
 }

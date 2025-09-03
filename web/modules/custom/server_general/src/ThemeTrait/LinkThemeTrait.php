@@ -54,4 +54,60 @@ trait LinkThemeTrait {
     ];
   }
 
+  /**
+   * Build a link preceded by an icon.
+   *
+   * @param array|string|\Drupal\Core\StringTranslation\TranslatableMarkup $content
+   *   The content of the link.
+   * @param \Drupal\Core\Url $url
+   *   The URL object.
+   * @param string|null $icon_class
+   *   The icon class.
+   *
+   * @return array
+   *   Render array.
+   */
+  public function buildLinkWithIcon(array|string|TranslatableMarkup $content, Url $url, ?string $icon_class = NULL): array {
+    return [
+      '#theme' => 'server_theme_link__with_icon',
+      '#url' => $url,
+      '#title' => $content,
+      '#icon_class' => $icon_class,
+    ];
+  }
+
+  /**
+   * Build an email link (with envelope icon).
+   *
+   * @param array|string|\Drupal\Core\StringTranslation\TranslatableMarkup $content
+   *   The content of the link.
+   * @param string $email
+   *   The email address.
+   *
+   * @return array
+   *   Render array.
+   */
+  public function buildLinkEmail(array|string|TranslatableMarkup $content, string $email): array {
+    $url = Url::fromUri("mailto:$email");
+    $icon_class = 'fa-envelope';
+    return $this->buildLinkWithIcon($content, $url, $icon_class);
+  }
+
+  /**
+   * Build a telephone number link (with phone icon).
+   *
+   * @param array|string|\Drupal\Core\StringTranslation\TranslatableMarkup $content
+   *   The content of the link.
+   * @param string $phone
+   *   The telephone number.
+   *
+   * @return array
+   *   Render array.
+   */
+  public function buildLinkPhone(array|string|TranslatableMarkup $content, string $phone): array {
+    $url = Url::fromUri("tel:$phone");
+    $icon_class = 'fa-phone';
+    return $this->buildLinkWithIcon($content, $url, $icon_class);
+  }
+
 }
