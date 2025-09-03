@@ -9,5 +9,7 @@ namespace Drupal\server_general\ThemeTrait\Enum;
  */
 enum BackgroundColorEnum: string {
   case LightGray = 'light-gray';
+  case LightGreen = 'light-green';
   case Transparent = 'transparent';
+  case White = 'white';
 }
