@@ -1,0 +1,5 @@
+{% set target = url.isExternal() ? '_blank' : '_self' %}
+
+<a href="{{ url }}" target="{{ target }}" class="py-4 w-full text-center inline-block">
+  <i class="{{ icon_class }} fa-solid mr-2 text-gray-400"></i><span>{{ title }}</span>
+</a>
