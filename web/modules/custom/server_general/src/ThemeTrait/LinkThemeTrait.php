@@ -7,6 +7,7 @@ namespace Drupal\server_general\ThemeTrait;
 use Drupal\Core\StringTranslation\TranslatableMarkup;
 use Drupal\Core\Url;
 use Drupal\server_general\ThemeTrait\Enum\ColorEnum;
+use Drupal\server_general\ThemeTrait\Enum\IconEnum;
 use Drupal\server_general\ThemeTrait\Enum\LineClampEnum;
 use Drupal\server_general\ThemeTrait\Enum\UnderlineEnum;
 
@@ -67,12 +68,12 @@ trait LinkThemeTrait {
    * @return array
    *   Render array.
    */
-  public function buildLinkWithIcon(array|string|TranslatableMarkup $content, Url $url, ?string $icon_class = NULL): array {
+  public function buildLinkWithIcon(array|string|TranslatableMarkup $content, Url $url, ?IconEnum $icon_class = IconEnum::None): array {
     return [
       '#theme' => 'server_theme_link__with_icon',
       '#url' => $url,
       '#title' => $content,
-      '#icon_class' => $icon_class,
+      '#icon_class' => $icon_class->value,
     ];
   }
 
@@ -89,8 +90,7 @@ trait LinkThemeTrait {
    */
   public function buildLinkEmail(array|string|TranslatableMarkup $content, string $email): array {
     $url = Url::fromUri("mailto:$email");
-    $icon_class = 'fa-envelope';
-    return $this->buildLinkWithIcon($content, $url, $icon_class);
+    return $this->buildLinkWithIcon($content, $url, IconEnum::Envelope);
   }
 
   /**
@@ -106,8 +106,7 @@ trait LinkThemeTrait {
    */
   public function buildLinkPhone(array|string|TranslatableMarkup $content, string $phone): array {
     $url = Url::fromUri("tel:$phone");
-    $icon_class = 'fa-phone';
-    return $this->buildLinkWithIcon($content, $url, $icon_class);
+    return $this->buildLinkWithIcon($content, $url, IconEnum::Phone);
   }
 
 }
