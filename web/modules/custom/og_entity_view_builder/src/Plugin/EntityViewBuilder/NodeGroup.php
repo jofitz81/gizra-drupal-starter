@@ -108,6 +108,9 @@ class NodeGroup extends EntityViewBuilderPluginAbstract {
           ],
         ];
       }
+      else {
+        $build[] = ['#markup' => t('You do not have permission to subscribe to this group')];
+      }
     }
     else {
       $url = Url::fromRoute('user.login', [], ['query' => ['destination' => $entity->toUrl()->getInternalPath()]]);
