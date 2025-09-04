@@ -51,7 +51,7 @@ trait PersonCardThemeTrait {
     $inner_elements = [];
     $inner_elements[] = $this->wrapTextCenter($name);
     if ($subtitle) {
-      $element = $subtitle;
+      $element = $this->wrapTextCenter($subtitle);
       $inner_elements[] = $this->wrapTextColor($element, TextColorEnum::Gray);
     }
     if ($badge) {
