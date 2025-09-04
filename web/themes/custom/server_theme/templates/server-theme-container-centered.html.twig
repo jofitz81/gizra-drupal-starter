@@ -1,0 +1,5 @@
+{% import '@server_theme/templates/server-theme-bg-color-base.html.twig' as bgColorBase %}
+
+<div class="{{ bgColorBase.getBgColor(bg_color) }} grid place-items-center p-8">
+  {{ element }}
+</div>

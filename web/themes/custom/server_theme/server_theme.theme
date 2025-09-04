@@ -100,6 +100,20 @@ function server_theme_theme() {
     ],
   ];
 
+  $info['server_theme_container_centered'] = [
+    'variables' => [
+      'bg_color' => NULL,
+      'element' => NULL,
+    ]
+  ];
+
+  $info['server_theme_container_links'] = [
+    'variables' => [
+      'bg_color' => NULL,
+      'links' => [],
+    ]
+  ];
+
   // Wrapper for "View more" items. Items over the limit will be hidden.
   $info['server_theme_element_items_with_view_more'] = [
     'variables' => [
@@ -178,6 +192,14 @@ function server_theme_theme() {
     ],
   ];
 
+  $info['server_theme_link__with_icon'] = [
+    'variables' => [
+      'url' => NULL,
+      'title' => NULL,
+      'icon_class' => NULL,
+    ],
+  ];
+
   // Content labels (e.g. showing the content type name on a card).
   $info['server_theme_label'] = [
     'variables' => [
@@ -208,6 +230,13 @@ function server_theme_theme() {
       'title' => NULL,
       'items' => [],
     ],
+  ];
+
+  $info['server_theme_lozenge'] = [
+    'variables' => [
+      'element' => NULL,
+      'bg_color' => NULL,
+    ]
   ];
 
   // Simple card.
@@ -248,6 +277,13 @@ function server_theme_theme() {
       'url' => NULL,
       // A render array.
       'items' => [],
+    ],
+  ];
+
+  $info['server_theme_inner_element_layout__vertical_justify_between'] = [
+    'variables' => [
+      'items' => NULL,
+      'bg_color' => NULL,
     ],
   ];
 

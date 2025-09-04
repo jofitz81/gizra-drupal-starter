@@ -26,6 +26,7 @@ use Drupal\server_general\ThemeTrait\InfoCardThemeTrait;
 use Drupal\server_general\ThemeTrait\LinkThemeTrait;
 use Drupal\server_general\ThemeTrait\NewsTeasersThemeTrait;
 use Drupal\server_general\ThemeTrait\PeopleTeasersThemeTrait;
+use Drupal\server_general\ThemeTrait\PersonCardThemeTrait;
 use Drupal\server_general\ThemeTrait\QuickLinksThemeTrait;
 use Drupal\server_general\ThemeTrait\QuoteThemeTrait;
 use Drupal\server_general\ThemeTrait\SearchThemeTrait;
@@ -58,6 +59,7 @@ class StyleGuideController extends ControllerBase {
   use LinkThemeTrait;
   use NewsTeasersThemeTrait;
   use PeopleTeasersThemeTrait;
+  use PersonCardThemeTrait;
   use QuickLinksThemeTrait;
   use QuoteThemeTrait;
   use SearchThemeTrait;
@@ -212,6 +214,12 @@ class StyleGuideController extends ControllerBase {
 
     $element = $this->getWebformElement();
     $build[] = $this->wrapElementNoContainer($element, 'Element: Webform');
+
+    $element = $this->getPersonCard();
+    $build[] = $this->wrapElementNoContainer($element, 'Element: Person card');
+
+    $element = $this->getPersonCards();
+    $build[] = $this->wrapElementNoContainer($element, 'Element: Person cards');
 
     return $build;
   }
@@ -771,6 +779,65 @@ class StyleGuideController extends ControllerBase {
       Link::fromTextAndUrl('View more', Url::fromRoute('<front>')),
     );
 
+  }
+
+  /**
+   * Get Person card element.
+   *
+   * @return array
+   *   Render array.
+   */
+  protected function getPersonCard(): array {
+    $name = 'Jane Cooper';
+
+    $element = $this->buildElementPersonCard(
+      $this->getPlaceholderPersonImage(128),
+      'The image alt for ' . $name,
+      $name,
+      'Paradigm Representative',
+      'Admin',
+      'j.cooper@example.com',
+      '01234 567890',
+    );
+
+    return $this->wrapContainerNarrow($element);
+  }
+
+  /**
+   * Get Person cards element.
+   *
+   * @return array
+   *   Render array.
+   */
+  protected function getPersonCards(): array {
+    $items = [];
+
+    $names = [
+      'Jon Doe',
+      'Smith Allen',
+      'David Bowie',
+      'Rick Morty',
+      'Joe Bloggs',
+      'Gary Neville',
+      'David James',
+      'Gabriel Jesus',
+      'Lauren James',
+      'Victor Moses',
+    ];
+
+    foreach ($names as $key => $name) {
+      $items[] = $this->buildElementPersonCard(
+        $this->getPlaceholderPersonImage(128),
+        'The image alt ' . $name,
+        $name,
+        $key <= 0 ? 'Paradigm Representative' : NULL,
+        $key <= 1 ? 'Admin' : NULL,
+        $key <= 6 ? 'admin@example.com' : NULL,
+        $key <= 3 ? '01234 567890' : NULL,
+      );
+    }
+
+    return $this->buildElementPersonCards($items);
   }
 
   /**

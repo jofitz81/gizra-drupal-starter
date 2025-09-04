@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace Drupal\server_general\ThemeTrait;
 
 use Drupal\Core\Url;
+use Drupal\server_general\ThemeTrait\Enum\BackgroundColorEnum;
 
 /**
  * ThemeTrait TagBuilderThemeTrait.
@@ -48,6 +49,14 @@ trait TagThemeTrait {
       '#theme' => 'server_theme_tags',
       '#title' => $title,
       '#items' => $items,
+    ];
+  }
+
+  protected function buildLozenge($element, BackgroundColorEnum $bg_color = BackgroundColorEnum::Transparent): array {
+    return [
+      '#theme' => 'server_theme_lozenge',
+      '#element' => $element,
+      '#bg_color' => $bg_color->value,
     ];
   }
 

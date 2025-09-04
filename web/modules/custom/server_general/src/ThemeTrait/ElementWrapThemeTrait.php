@@ -309,6 +309,51 @@ trait ElementWrapThemeTrait {
   }
 
   /**
+   * Wrap a collection of links.
+   *
+   * @param array $links
+   *  The links.
+   * @return array
+   *   Render array
+   */
+  protected function wrapContainerLinks(array $links, BackgroundColorEnum $bg_color = BackgroundColorEnum::Transparent): array {
+    $links = $this->filterEmptyElements($links);
+    if (empty($links)) {
+      // Links is empty, so no need to wrap it.
+      return [];
+    }
+
+    return [
+      '#theme' => 'server_theme_container_links',
+      '#links' => $links,
+      '#bg_color' => $bg_color->value,
+    ];
+  }
+
+  /**
+   * Wrap an element and center the contents.
+   *
+   * @param array $element
+   *   The render array.
+   *
+   * @return array
+   *   Render array.
+   */
+  protected function wrapContainerCentered(array $element, BackgroundColorEnum $bg_color = BackgroundColorEnum::Transparent): array {
+    $element = $this->filterEmptyElements($element);
+    if (empty($element)) {
+      // Element is empty, so no need to wrap it.
+      return [];
+    }
+
+    return [
+      '#theme' => 'server_theme_container_centered',
+      '#element' => $element,
+      '#bg_color' => $bg_color->value,
+    ];
+  }
+
+  /**
    * Wrap an element with Prose text.
    *
    * @return array

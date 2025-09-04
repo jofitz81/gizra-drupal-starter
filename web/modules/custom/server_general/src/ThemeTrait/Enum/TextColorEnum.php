@@ -9,6 +9,7 @@ namespace Drupal\server_general\ThemeTrait\Enum;
  */
 enum TextColorEnum: string {
   case DarkGray = 'dark-gray';
+  case DarkGreen = 'dark-green';
   case Gray = 'gray';
   case LightGray = 'light-gray';
 }
